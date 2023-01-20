@@ -7,12 +7,18 @@ using TMPro;
 public class OptionsController : MonoBehaviour
 {
     [SerializeField] GameObject mainMenuPanel;
+    [SerializeField] GameObject creditsPanel;
     [SerializeField] AudioMixer[] audioMixers;
     [SerializeField] TMP_Text percentage;
     public void CloseOptionsPanel()
     {
         gameObject.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+    public void ShowCreditsPanel()
+    {
+        gameObject.SetActive(false);
+        creditsPanel.SetActive(true);
     }
 
     public void SetVolume(float volume)
