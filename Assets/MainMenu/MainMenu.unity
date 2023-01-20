@@ -157,7 +157,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -646,8 +646,8 @@ RectTransform:
   m_Father: {fileID: 424649355}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1619,7 +1619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &569923266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1705,6 +1705,7 @@ MonoBehaviour:
   - {fileID: 24100000, guid: a525379f2d0800140a50199926db0dae, type: 2}
   - {fileID: 24100000, guid: ccd86969c366ad140a67b8e3388da498, type: 2}
   percentage: {fileID: 848315204}
+  slider: {fileID: 605924793}
 --- !u!1 &605924791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1822,7 @@ GameObject:
   - component: {fileID: 687984053}
   - component: {fileID: 687984052}
   - component: {fileID: 687984051}
+  - component: {fileID: 687984054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1894,6 +1896,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &687984054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687984050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9468edb4a0186ec438f9314e2047f5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixers:
+  - {fileID: 24100000, guid: 4246bc8e7953dcc4b84e53ae5ca70472, type: 2}
+  - {fileID: 24100000, guid: e6d425083710f6a4a8e29cd43bb3dd10, type: 2}
+  - {fileID: 24100000, guid: cd807f63d91c15842b32679766b7b3bd, type: 2}
+  - {fileID: 24100000, guid: 4d17cb7d03371cd4e89b4ca48f51fe34, type: 2}
+  - {fileID: 24100000, guid: a525379f2d0800140a50199926db0dae, type: 2}
+  - {fileID: 24100000, guid: ccd86969c366ad140a67b8e3388da498, type: 2}
 --- !u!1 &848315202
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,7 +3299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1684847457
 RectTransform:
   m_ObjectHideFlags: 0

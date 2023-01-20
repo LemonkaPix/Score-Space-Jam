@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class OptionsController : MonoBehaviour
     [SerializeField] GameObject creditsPanel;
     [SerializeField] AudioMixer[] audioMixers;
     [SerializeField] TMP_Text percentage;
+    [SerializeField] Slider slider;
+    private void OnEnable()
+    {
+        float volume = PlayerPrefs.GetFloat("Volume");
+        slider.value = volume;
+        percentage.text = Mathf.Round((volume + 80) / 80 * 100).ToString();
+        SetVolume(volume);
+    }
     public void CloseOptionsPanel()
     {
         gameObject.SetActive(false);
@@ -28,6 +37,7 @@ public class OptionsController : MonoBehaviour
             mixer.SetFloat("Volume", volume);
         }
         percentage.text = Mathf.Round((volume + 80) / 80 * 100).ToString();
+        PlayerPrefs.SetFloat("Volume",volume);
     }
 
     public void SetFullscreen(bool isFullscreen)
