@@ -23,4 +23,9 @@ public class OptionsController : MonoBehaviour
         }
         percentage.text = Mathf.Round((volume + 80) / 80 * 100).ToString();
     }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
 }
