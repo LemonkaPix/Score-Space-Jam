@@ -3,8 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    body,
+    shooter,
+    sniper,
+    shotgunner,
+    spammer
+}
+
 public class Enemy : MonoBehaviour
 {
+    Transform player;
+    [SerializeField] EnemyType enemyType;
     public int health = 100;
 
     public float fireRate;
@@ -12,8 +23,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
     bool isDelayed = true;
+    [SerializeField] float attackRange;
+    [SerializeField] float speed;
+    [SerializeField] float bulletSpeed;
 
-
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>().transform;
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -35,13 +52,36 @@ public class Enemy : MonoBehaviour
             isDelayed = false;
             StartCoroutine(Shoot());
         }
+        switch (enemyType)
+        {
+            case EnemyType.body:
+                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                break;
+            case EnemyType.shooter:
+                if (Vector2.Distance(player.position, transform.position) >= attackRange) 
+                    transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                break;
+            case EnemyType.sniper:
+                break;
+            case EnemyType.shotgunner:
+                break;
+            case EnemyType.spammer:
+                break;
+            default:
+                break;
+        }
+
+        Vector3 offset = player.position - transform.position;
+
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
     }
 
     private IEnumerator Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().damage = damage;
-        yield return new WaitForSeconds(2);
+        bullet.GetComponent<Bullet>().speed = bulletSpeed;
+        yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }
 

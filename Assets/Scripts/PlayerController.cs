@@ -90,4 +90,18 @@ public class PlayerController : MonoBehaviour
             healthBar[i].enabled = (i < HealthLevel);
         }
     }
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("taking damage");
+        plrHealth -= damage;
+        if (plrHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("you died mother fucker");
+    }
 }
