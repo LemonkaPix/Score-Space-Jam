@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public enum Evolve
-{ 
+{
     circle,
     traingle,
     square,
@@ -25,10 +26,15 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Evolves;
 
     [Header("Upgrades")]
-    public int DamageLevel = 0;
     public int HealthLevel = 0;
+    public int DamageLevel = 0;
     public int SpeedLevel = 0;
     public int FireRateLevel = 0;
+
+    [SerializeField] Image[] fireRateBar;
+    [SerializeField] Image[] speedBar;
+    [SerializeField] Image[] damageBar;
+    [SerializeField] Image[] healthBar;
 
     private void Update()
     {
@@ -47,7 +53,6 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-
     }
 
     [Button]
@@ -56,5 +61,25 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject.transform.GetChild(0).gameObject);
         Instantiate(Evolves[evolve], gameObject.transform);
         CurrentEvolve = evolve;
+    }
+    [Button]
+    void BarFiller()
+    {
+        for (int i = 0; i < fireRateBar.Length; i++)
+        {
+            fireRateBar[i].enabled = (i < FireRateLevel);
+        }
+        for (int i = 0; i < speedBar.Length; i++)
+        {
+            speedBar[i].enabled = (i < SpeedLevel);
+        }
+        for (int i = 0; i < damageBar.Length; i++)
+        {
+            damageBar[i].enabled = (i < DamageLevel);
+        }
+        for (int i = 0; i < healthBar.Length; i++)
+        {
+            healthBar[i].enabled = (i < HealthLevel);
+        }
     }
 }
