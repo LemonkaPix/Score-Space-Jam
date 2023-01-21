@@ -2629,10 +2629,30 @@ MonoBehaviour:
   plrDamage: 10
   plrFireRate: 60
   plrExperience: 0
-  fireRateBar: []
-  speedBar: []
-  damageBar: []
-  healthBar: []
+  fireRateBar:
+  - {fileID: 245672497}
+  - {fileID: 1035438226}
+  - {fileID: 118900197}
+  - {fileID: 1746425305}
+  - {fileID: 1393300885}
+  speedBar:
+  - {fileID: 480894005}
+  - {fileID: 1664057430}
+  - {fileID: 1917493649}
+  - {fileID: 529052028}
+  - {fileID: 2096132397}
+  damageBar:
+  - {fileID: 1925428318}
+  - {fileID: 344323411}
+  - {fileID: 1471045078}
+  - {fileID: 1627167315}
+  - {fileID: 457155579}
+  healthBar:
+  - {fileID: 1476748633}
+  - {fileID: 991472735}
+  - {fileID: 273056163}
+  - {fileID: 288657660}
+  - {fileID: 708651709}
 --- !u!1 &926744849
 GameObject:
   m_ObjectHideFlags: 0
