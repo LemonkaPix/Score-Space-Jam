@@ -2462,10 +2462,16 @@ MonoBehaviour:
   - {fileID: 2035235587198446434, guid: 8dd6979c5d2b46f439bdb0627b4daf25, type: 3}
   - {fileID: 3672970102274885164, guid: ac09722bde62ea54ba3a1cd548fd58c1, type: 3}
   - {fileID: 446598453757866112, guid: 688b7181606c5fe4682c736fd114ef3b, type: 3}
+  EvolvesList: 64000000c80000002c01000090010000f4010000
   HealthLevel: 0
   DamageLevel: 0
   SpeedLevel: 0
   FireRateLevel: 0
+  plrHealth: 100
+  plrSpeed: 5
+  plrDamage: 10
+  plrFireRate: 60
+  plrExperience: 0
   fireRateBar:
   - {fileID: 245672497}
   - {fileID: 1035438226}
@@ -3914,6 +3920,14 @@ PrefabInstance:
     - target: {fileID: 335461867996499806, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
       propertyPath: m_Name
       value: Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 573403973451120890, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
+      propertyPath: abilityCooldown
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 573403973451120890, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
+      propertyPath: abilityLifeTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
