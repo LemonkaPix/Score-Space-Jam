@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4841590750393928266}
   - component: {fileID: 4454203324978478982}
   - component: {fileID: 6595553177231102922}
+  - component: {fileID: 4542582919235225751}
   m_Layer: 0
-  m_Name: Traingle
+  m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +102,24 @@ MonoBehaviour:
   fireRate: 600
   firePoint: {fileID: 1977399485111399357}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
+--- !u!114 &4542582919235225751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811502031545564546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0c0dd162fc761459d10591ed4ee274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Speed: 8
+  Damage: 10
+  FireRate: 90
+  pathId: 1
+  pathEvolution: 0
 --- !u!1 &4320319568825748405
 GameObject:
   m_ObjectHideFlags: 0

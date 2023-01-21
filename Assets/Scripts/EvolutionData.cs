@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="Shape")]
-public class EvolutionData : ScriptableObject
+public class EvolutionData : MonoBehaviour
 {
-    public float Health;
+    public int Health;
     public float Speed;
-    public float Damage;
+    public int Damage;
     public float FireRate;
 
-    public Sprite Sprite;
-    public Sprite UtilitySprite;
+    public int pathId;
+    public int pathEvolution;
 
-    public GameObject Bullet;
+    private void Start()
+    {
+        Weapon weapon = transform.GetComponent<Weapon>();
+        weapon.fireRate = FireRate;
+        weapon.damage = Damage;
+    }
 
 
 }
