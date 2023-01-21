@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Shape")]
 public class EvolutionData : MonoBehaviour
 {
     public int Health;
