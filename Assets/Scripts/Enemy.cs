@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
         {
             case EnemyType.body:
                 transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                if (FindObjectOfType<PlayerMovement>().isDashing) return;
                 if (Vector2.Distance(player.position, transform.position) < attackRange)
                 {
                     player.GetComponent<PlayerController>().TakeDamage(damage);

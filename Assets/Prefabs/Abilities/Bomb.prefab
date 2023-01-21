@@ -135,6 +135,7 @@ MonoBehaviour:
   lifeTime: 5
   rb: {fileID: 6470231992223463006}
   damage: 100
+  canDamagePlayer: 0
   isBomb: 1
   BombExplosion: {fileID: 335461867996499806, guid: ba39a0ca255b24d45a2131c18892927e, type: 3}
 --- !u!50 &6470231992223463006
@@ -165,7 +166,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335461867996499806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

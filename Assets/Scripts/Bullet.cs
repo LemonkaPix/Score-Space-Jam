@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,6 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float lifeTime;
     [SerializeField] Rigidbody2D rb;
     public int damage;
+    public bool canDamagePlayer = true;
 
     [Header("Bomb Ability")]
     public bool isBomb;
@@ -21,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator ExplosionDamage(Vector2 center, float radius)
     {
-        Debug.Log("h");
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(center, radius);
         GameObject bombExplosion = Instantiate(BombExplosion, transform.position, transform.rotation, transform.parent);
         transform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -33,22 +35,14 @@ public class Bullet : MonoBehaviour
                     Enemies.GetComponent<Enemy>().TakeDamage(damage);
                 }
             }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(bombExplosion);
         Destroy(gameObject);
     }
 
 
     IEnumerator LifeTime()
-    {
-        if(isBomb)
-        {
-            yield return new WaitForSeconds(0.1f);
-            CircleCollider2D collider = transform.GetComponent<CircleCollider2D>();
-            collider.enabled = true;
-        }
-        
-        
+    {        
         yield return new WaitForSeconds(lifeTime);
         if(!isBomb) Destroy(gameObject);
         else
@@ -60,7 +54,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            if (isBomb)
+        if (collision.GetComponent<Weapon>() && !canDamagePlayer) return;
+        if (collision.GetComponent<Bullet>()) return;
+        if (collision.GetComponent<Enemy>() && canDamagePlayer) return;
+
+        if(collision.transform.parent)
+        {
+            PlayerMovement dashCheck = collision.transform.parent.GetComponent<PlayerMovement>();
+            if (dashCheck != null && dashCheck.isDashing) return;
+        }
+        
+
+        if (isBomb)
             {
                 StartCoroutine(ExplosionDamage(transform.position, 10));
             }
@@ -70,7 +75,7 @@ public class Bullet : MonoBehaviour
                 Weapon player = collision.GetComponent<Weapon>();
                 if (enemy != null) enemy.TakeDamage(damage);
                 else if (player != null) player.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
-                Destroy(gameObject);            
-            }
+                Destroy(gameObject);
+        }
     }
 }
