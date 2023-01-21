@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     public int damage;
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
-    EvolutionData EvolutionData = new();
     bool isDelayed = true;
 
     void Update()
