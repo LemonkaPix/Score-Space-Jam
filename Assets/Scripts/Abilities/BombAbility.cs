@@ -6,14 +6,13 @@ public class BombAbility : MonoBehaviour
 {
     [Header("Control variables")]
     public GameObject abilityPrefab;
-    [SerializeField] int abilityCooldown;
-    [SerializeField] int damage;
     public Sprite abilitySprite;
     [SerializeField] Transform firePoint;
 
     [Header("Stats")]
     public bool onCooldown;
-
+    [SerializeField] int damage;
+    [SerializeField] int abilityCooldown;
 
     IEnumerator AbilityCooldown()
     {

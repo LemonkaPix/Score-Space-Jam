@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsPanel;
     [HideInInspector] public bool IsPaused = false;
+    bool onRamCooldown;
+    [HideInInspector] public int ramDamage;
 
     [Header("Evolution")]
     public int CurrentEvolve = 0;   //0-circle, 1-traingle, 2-square, 3-diamond, 4-hexagon
     public GameObject[] Evolves;
-    public List<int> EvolvesList = new List<int>() {100, 200, 300, 400, 500};
+    [HideInInspector] public List<int> EvolvesList = new List<int>() { 100, 200, 300, 400, 500 };
 
     [Header("Upgrades")]
     public int HealthLevel = 0;
@@ -33,12 +35,12 @@ public class PlayerController : MonoBehaviour
     public int FireRateLevel = 0;
 
     [Header("PlayerStats")]
-    public int plrHealth = 100;
+    public float plrHealth = 100;
     public float plrSpeed = 5f;
     public int plrDamage = 10;
     public int plrFireRate = 60;
     public int plrExperience = 0;
-    
+
     [SerializeField] Image[] fireRateBar;
     [SerializeField] Image[] speedBar;
     [SerializeField] Image[] damageBar;
@@ -61,6 +63,25 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+    }
+
+    IEnumerator ramCooldown()
+    {
+        onRamCooldown = true;
+        yield return new WaitForSeconds(0.5f);
+        onRamCooldown = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy == null || onRamCooldown) return;
+        
+        PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
+        if (playerMovement.isDashing == false) return;
+
+        enemy.TakeDamage(playerMovement.dashDamage);
+        StartCoroutine(ramCooldown());
     }
 
     [Button]

@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 335461867996499803}
   - component: {fileID: 335461867996499804}
   - component: {fileID: -8795559759753811528}
-  - component: {fileID: 573403973451120890}
   - component: {fileID: 4739224942365995382}
   m_Layer: 0
   m_Name: Circle
@@ -154,25 +153,6 @@ MonoBehaviour:
   FireRate: 60
   pathId: 0
   pathEvolution: 0
---- !u!114 &573403973451120890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335461867996499806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2c42edb853be6499dafc4541ef8bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 335461867996499806, guid: 0352f9cfd639edf4d94704ba563e92be, type: 3}
-  abilityCooldown: 5
-  abilityLifeTime: 0
-  shieldAmount: 50
-  abilitySprite: {fileID: 0}
-  onCooldown: 0
-  onUse: 0
 --- !u!58 &4739224942365995382
 CircleCollider2D:
   m_ObjectHideFlags: 0
