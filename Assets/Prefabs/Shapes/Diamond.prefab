@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3672970102274885167}
   - component: {fileID: 3672970102274885161}
   - component: {fileID: 3672970102274885166}
+  - component: {fileID: 2724506889551396202}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -101,6 +102,24 @@ MonoBehaviour:
   fireRate: 600
   firePoint: {fileID: 3672970103269389466}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
+--- !u!114 &2724506889551396202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672970102274885164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0c0dd162fc761459d10591ed4ee274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 60
+  Speed: 5
+  Damage: 30
+  FireRate: 60
+  pathId: 4
+  pathEvolution: 0
 --- !u!1 &3672970103269389467
 GameObject:
   m_ObjectHideFlags: 0

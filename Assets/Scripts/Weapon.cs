@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] float fireRate;
+    public float fireRate;
+    public int damage;
     [SerializeField] Transform firePoint;
-    [SerializeField] GameObject bulletPrefab;
-
+    public GameObject bulletPrefab;
+    EvolutionData EvolutionData = new();
     bool isDelayed = true;
+
     void Update()
     {
         if (Input.GetButton("Fire1") && isDelayed)
@@ -21,7 +23,8 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Bullet>().damage = damage;
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }
