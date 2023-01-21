@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733571537343745790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1733571537613194314}
   - component: {fileID: 1733571537613194315}
   - component: {fileID: 1733571537613194312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3e422e9dedb074f9e54c586783a18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   enemyType: 1
   health: 100
   fireRate: 60

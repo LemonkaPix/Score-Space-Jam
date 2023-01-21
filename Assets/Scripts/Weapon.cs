@@ -24,6 +24,7 @@ public class Weapon : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().damage = damage;
+        bullet.layer = 9;
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }

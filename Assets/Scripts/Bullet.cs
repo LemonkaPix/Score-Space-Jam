@@ -60,16 +60,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
             if (isBomb)
             {
                 StartCoroutine(ExplosionDamage(transform.position, 10));
             }
             else
             {
-                PlayerController player = collision.gameObject.transform.parent.GetComponent<PlayerController>();
+                Enemy enemy = collision.GetComponent<Enemy>();
+                Weapon player = collision.GetComponent<Weapon>();
                 if (enemy != null) enemy.TakeDamage(damage);
-                else if (player != null) player.TakeDamage(damage);
+                else if (player != null) player.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
                 Destroy(gameObject);            
             }
     }
