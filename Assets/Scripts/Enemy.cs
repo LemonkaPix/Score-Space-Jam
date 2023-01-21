@@ -47,7 +47,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isDelayed)
+        Vector3 offset = player.position - transform.position;
+
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
+        if (isDelayed && enemyType != EnemyType.body)
         {
             isDelayed = false;
             StartCoroutine(Shoot());
@@ -56,6 +59,11 @@ public class Enemy : MonoBehaviour
         {
             case EnemyType.body:
                 transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                if (Vector2.Distance(player.position, transform.position) < attackRange)
+                {
+                    player.GetComponent<PlayerController>().TakeDamage(damage);
+                    Die();
+                }
                 break;
             case EnemyType.shooter:
                 if (Vector2.Distance(player.position, transform.position) >= attackRange) 
@@ -71,9 +79,6 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        Vector3 offset = player.position - transform.position;
-
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
     }
 
     private IEnumerator Shoot()
@@ -81,6 +86,7 @@ public class Enemy : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().damage = damage;
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
+        bullet.layer = 8;
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }
