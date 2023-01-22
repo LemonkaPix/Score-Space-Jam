@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3e422e9dedb074f9e54c586783a18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 17542367066168184}
   enemyType: 1
   health: 1
   fireRate: 120
@@ -135,6 +136,7 @@ MonoBehaviour:
   attackRange: 10
   speed: 3
   bulletSpeed: 8
+  bulletColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &17542367900265018
 GameObject:
   m_ObjectHideFlags: 0

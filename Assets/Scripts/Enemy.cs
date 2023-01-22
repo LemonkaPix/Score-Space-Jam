@@ -16,6 +16,7 @@ public enum EnemyType
 public class Enemy : MonoBehaviour
 {
     Transform player;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] EnemyType enemyType;
     public int health = 100;
 
@@ -36,10 +37,19 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        StartCoroutine(DamageVisual());
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    IEnumerator DamageVisual()
+    {
+        Color basecolor = spriteRenderer.color;
+        spriteRenderer.color = UnityEngine.Color.white;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = basecolor;
     }
 
     private void Die()
