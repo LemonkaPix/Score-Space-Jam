@@ -12,12 +12,4 @@ public class EvolutionData : MonoBehaviour
     public int pathId;
     public int pathEvolution;
 
-    private void Start()
-    {
-        Weapon weapon = transform.GetComponent<Weapon>();
-        weapon.fireRate = FireRate;
-        weapon.damage = Damage;
-    }
-
-
 }

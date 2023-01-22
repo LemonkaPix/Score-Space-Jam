@@ -26,16 +26,21 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-
         healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
     }
 
     [Button]
+
+    public void choosePath(int index) // 1 - triangle, 2 - square, 3 - rhomb, 4 - hexagon
+    {
+        controller.currentPath = index;
+        controller.spawnFigure();
+        pathSelector.SetActive(false);
+    }
+
     public void EvolveXpText()
     {
-        experienceText.text = $"{controller.EvolvesList[controller.CurrentEvolve]} xp to evolve";
+        experienceText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
     }
 
     [Button]

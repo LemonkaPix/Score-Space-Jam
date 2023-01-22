@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject optionsPanel;
     [HideInInspector] public bool IsPaused = false;
     [SerializeField] GameObject gameUi;
+    [SerializeField] GameObject PathSelection;
 
     bool onRamCooldown;
     [HideInInspector] public int ramDamage;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
@@ -96,19 +98,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Evolution(int evolve)
+
+    public void spawnFigure()
     {
-
-        plrExperience = 0;
-        if(currentPath == 0)
-        {
-            // Circle evolution
-            Debug.Log("evolve circle here");
-            return;
-        }
-        currentPathEvo++;
-
-        for(int i = 0; i < Shapes.Length; i++)
+        for (int i = 0; i < Shapes.Length; i++)
         {
             GameObject currentShape = Shapes[i];
             EvolutionData evoData = currentShape.GetComponent<EvolutionData>();
@@ -116,13 +109,28 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(gameObject.transform.GetChild(0).gameObject);
                 Instantiate(currentShape, gameObject.transform);
-                plrHealth = evoData.Health;
+                Debug.Log("h");
+                maxPlrHealth = evoData.Health;
+                plrHealth += 20;
                 plrSpeed = evoData.Speed;
                 plrDamage = evoData.Damage;
                 plrFireRate = evoData.FireRate;
             }
         }
-        
+    }
+
+    public void Evolution(int evolve)
+    {
+
+        plrExperience = 0;
+        if(currentPath == 0)
+        {
+            // Circle evolution
+            PathSelection.SetActive(true);
+            return;
+        }
+        currentPathEvo++;
+        spawnFigure();
     }
     public void TakeDamage(int damage)
     {
