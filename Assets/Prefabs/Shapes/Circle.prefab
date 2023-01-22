@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 335461867996499803}
   - component: {fileID: 335461867996499804}
   - component: {fileID: -8795559759753811528}
-  - component: {fileID: 4739224942365995382}
+  - component: {fileID: -1653796194603431213}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -108,8 +108,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 260a9ef41dabada41b7493757b8a6ba1, type: 3}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   damage: 0
   firePoint: {fileID: 335461867442920375}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
-  bulletColor: {r: 1, g: 1, b: 1, a: 0}
+  bulletColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &-8795559759753811528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +154,8 @@ MonoBehaviour:
   FireRate: 60
   pathId: 0
   pathEvolution: 0
---- !u!58 &4739224942365995382
-CircleCollider2D:
+--- !u!60 &-1653796194603431213
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,5 +168,24 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4375, y: 0.90625}
+      - {x: -0.53125, y: 0.90625}
+      - {x: -0.90625, y: 0.34375}
+      - {x: -0.90625, y: -0.28125}
+      - {x: -0.625, y: -0.78125}
+      - {x: -0.34375, y: -0.84375}
+      - {x: 0.375, y: -0.84375}
+      - {x: 0.84375, y: -0.5}
+      - {x: 0.90625, y: -0.25}
+      - {x: 0.90625, y: 0.53125}

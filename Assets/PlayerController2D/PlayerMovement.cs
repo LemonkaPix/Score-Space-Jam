@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
+    float moveSpeed = 5f;
     [SerializeField] Rigidbody2D rb;
     public bool isDashing = false;
     public float dashSpeed;
@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        PlayerController pc = gameObject.GetComponent<PlayerController>();
+        moveSpeed = pc.plrSpeed;
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
     }
@@ -20,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
             rb.MovePosition(rb.position + new Vector2(transform.up.x, transform.up.y) * dashSpeed * Time.fixedDeltaTime);
-        //rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
         else
                 {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
