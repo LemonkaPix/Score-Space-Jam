@@ -105,6 +105,7 @@ MonoBehaviour:
   damage: 0
   firePoint: {fileID: 1977399485111399357}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
+  bulletColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &4542582919235225751
 MonoBehaviour:
   m_ObjectHideFlags: 0

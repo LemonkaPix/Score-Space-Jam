@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
     bool isDelayed = true;
+    [SerializeField] Color bulletColor;
 
     void Update()
     {
@@ -27,6 +29,7 @@ public class Weapon : MonoBehaviour
         bulletStats.damage = damage;
         bulletStats.canDamagePlayer = false;
         bullet.layer = 9;
+        bullet.GetComponent<SpriteRenderer>().color = bulletColor;
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }

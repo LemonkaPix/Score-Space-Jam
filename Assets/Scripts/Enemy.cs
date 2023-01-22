@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EnemyType
 {
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange;
     [SerializeField] float speed;
     [SerializeField] float bulletSpeed;
+    [SerializeField] Color bulletColor;
 
     private void Start()
     {
@@ -82,6 +84,7 @@ public class Enemy : MonoBehaviour
             bullet.GetComponent<Bullet>().damage = damage;
             bullet.GetComponent<Bullet>().speed = bulletSpeed;
             bullet.layer = 8;
+            bullet.GetComponent<SpriteRenderer>().color = bulletColor;
         }
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
