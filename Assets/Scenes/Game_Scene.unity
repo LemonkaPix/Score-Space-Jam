@@ -3182,7 +3182,7 @@ MonoBehaviour:
   plrSpeed: 5
   plrDamage: 10
   plrFireRate: 60
-  plrExperience: 1000
+  plrExperience: 0
 --- !u!1 &926744849
 GameObject:
   m_ObjectHideFlags: 0

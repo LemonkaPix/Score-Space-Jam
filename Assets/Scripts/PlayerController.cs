@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] UIController uiController;
 
-    [Header("Pause Menu")]
+    [Header("UI")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsPanel;
     [HideInInspector] public bool IsPaused = false;

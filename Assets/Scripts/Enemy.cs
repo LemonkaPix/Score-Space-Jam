@@ -16,6 +16,7 @@ public enum EnemyType
 public class Enemy : MonoBehaviour
 {
     Transform player;
+    PlayerController playerController;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] EnemyType enemyType;
     public int health = 100;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform[] firePoints;
     public GameObject bulletPrefab;
     bool isDelayed = true;
+    [SerializeField] int experience;
     [SerializeField] float attackRange;
     [SerializeField] float speed;
     [SerializeField] float bulletSpeed;
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>().transform;
+        playerController = FindObjectOfType<PlayerController>();
     }
     public void TakeDamage(int damage)
     {
@@ -55,6 +58,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        playerController.AddExperience(experience);
     }
 
     void Update()
