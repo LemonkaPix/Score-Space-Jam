@@ -26,6 +26,9 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+
         healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
     }
 

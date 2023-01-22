@@ -53,7 +53,8 @@ public class Bullet : MonoBehaviour
         else
         {
             rb.velocity = transform.up * 0;
-            ExplosionDamage(transform.position, 10);
+            StartCoroutine(ExplosionDamage(transform.position, 10));
+            
         }
     }
 
