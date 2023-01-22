@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(ramCooldown());
     }
 
-    [Button]
     public void Evolution(int evolve)
     {
         Destroy(gameObject.transform.GetChild(0).gameObject);

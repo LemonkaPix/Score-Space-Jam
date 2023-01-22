@@ -41,11 +41,11 @@ public class DashAbility : MonoBehaviour
 
     void Update()
     {
-        bool playerIsMoving = true;
+        //bool playerIsMoving = true;
 
-        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) playerIsMoving = false;
+        //if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) playerIsMoving = false;
 
-        if (Input.GetKeyDown("space") && !onCooldown && playerIsMoving)
+        if (Input.GetKeyDown("space") && !onCooldown)
         {
             StartCoroutine(AbilityCooldown());
         }

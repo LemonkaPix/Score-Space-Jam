@@ -18,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isDashing) rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
+        if (isDashing)
+            rb.MovePosition(rb.position + new Vector2(transform.up.x, transform.up.y) * dashSpeed * Time.fixedDeltaTime);
+        //rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
         else
-        {
+                {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
         
