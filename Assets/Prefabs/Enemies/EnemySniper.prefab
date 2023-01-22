@@ -163,6 +163,6 @@ MonoBehaviour:
   firePoints:
   - {fileID: 7971879695285109440}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
-  attackRange: 12
+  attackRange: 15
   speed: 3
   bulletSpeed: 20

@@ -16,10 +16,13 @@ public enum Evolve
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] UIController uiController;
+
     [Header("Pause Menu")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsPanel;
     [HideInInspector] public bool IsPaused = false;
+
     bool onRamCooldown;
     [HideInInspector] public int ramDamage;
 
@@ -40,11 +43,6 @@ public class PlayerController : MonoBehaviour
     public int plrDamage = 10;
     public int plrFireRate = 60;
     public int plrExperience = 0;
-
-    [SerializeField] Image[] fireRateBar;
-    [SerializeField] Image[] speedBar;
-    [SerializeField] Image[] damageBar;
-    [SerializeField] Image[] healthBar;
 
     private void Update()
     {
@@ -90,30 +88,11 @@ public class PlayerController : MonoBehaviour
         Instantiate(Evolves[evolve], gameObject.transform);
         CurrentEvolve = evolve;
     }
-    [Button]
-    void BarFiller()
-    {
-        for (int i = 0; i < fireRateBar.Length; i++)
-        {
-            fireRateBar[i].enabled = (i < FireRateLevel);
-        }
-        for (int i = 0; i < speedBar.Length; i++)
-        {
-            speedBar[i].enabled = (i < SpeedLevel);
-        }
-        for (int i = 0; i < damageBar.Length; i++)
-        {
-            damageBar[i].enabled = (i < DamageLevel);
-        }
-        for (int i = 0; i < healthBar.Length; i++)
-        {
-            healthBar[i].enabled = (i < HealthLevel);
-        }
-    }
     public void TakeDamage(int damage)
     {
         Debug.Log("taking damage");
         plrHealth -= damage;
+        uiController.UpdateHealthaBar();
         if (plrHealth <= 0)
         {
             Die();

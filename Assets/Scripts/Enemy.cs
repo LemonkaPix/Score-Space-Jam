@@ -50,36 +50,28 @@ public class Enemy : MonoBehaviour
         Vector3 offset = player.position - transform.position;
 
         transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
-        if (isDelayed && enemyType != EnemyType.body)
-        {
-            isDelayed = false;
-            StartCoroutine(Shoot());
-        }
-        switch (enemyType)
-        {
-            case EnemyType.body:
-                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                if (FindObjectOfType<PlayerMovement>().isDashing) return;
-                if (Vector2.Distance(player.position, transform.position) < attackRange)
-                {
-                    player.GetComponent<PlayerController>().TakeDamage(damage);
-                    Die();
-                }
-                break;
-            case EnemyType.shooter:
-                if (Vector2.Distance(player.position, transform.position) >= attackRange) 
-                    transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                break;
-            case EnemyType.sniper:
-                break;
-            case EnemyType.shotgunner:
-                break;
-            case EnemyType.spammer:
-                break;
-            default:
-                break;
-        }
 
+        if (enemyType == EnemyType.body)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            if (FindObjectOfType<PlayerMovement>().isDashing) return;
+            if (Vector2.Distance(player.position, transform.position) < attackRange)
+            {
+                player.GetComponent<PlayerController>().TakeDamage(damage);
+                Die();
+            }
+        }
+        else
+        {
+            if (Vector2.Distance(player.position, transform.position) >= attackRange)
+                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            else if (isDelayed)
+            {
+                isDelayed = false;
+                StartCoroutine(Shoot());
+            }
+
+        }
     }
 
     private IEnumerator Shoot()
