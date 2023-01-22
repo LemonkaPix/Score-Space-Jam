@@ -108,4 +108,10 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("you died mother fucker");
     }
+
+    public void AddExperience(int exp)
+    {
+        plrExperience += exp;
+        uiController.experienceText.text = $"{plrExperience} xp";
+    }
 }

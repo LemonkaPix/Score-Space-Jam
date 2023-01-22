@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net.Security;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -14,9 +16,12 @@ public class Bullet : MonoBehaviour
     [Header("Bomb Ability")]
     public bool isBomb;
     [SerializeField] GameObject BombExplosion;
-
+    [SerializeField] TrailRenderer trail;
+    [SerializeField] SpriteRenderer sprite;
     private void Start()
     {
+        trail.startColor = sprite.color;
+        trail.endColor = new Color32(0,0,0,0);
         rb.velocity = transform.up * speed;
         StartCoroutine(LifeTime());
     }

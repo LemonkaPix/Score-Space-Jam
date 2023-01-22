@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Image healthBarLerp;
     [SerializeField] TMP_Text healthBarText;
     [SerializeField] GameObject abilityIcon;
-    [SerializeField] GameObject experienceText;
+    public TMP_Text experienceText;
     [SerializeField] GameObject pathSelector;
 
     [SerializeField] Image[] fireRateUpBar;
@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        experienceText.GetComponent<TextMeshProUGUI>().text = $"{controller.plrExperience} xp";
+        
         experienceText.transform.Find("EvolveExp").GetComponent<TextMeshProUGUI>().text = $"{controller.EvolvesList[controller.CurrentEvolve]} xp to evolve";
         healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
 
