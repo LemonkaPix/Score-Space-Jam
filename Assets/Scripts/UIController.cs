@@ -27,9 +27,15 @@ public class UIController : MonoBehaviour
     void Update()
     {
         
-        experienceText.transform.Find("EvolveExp").GetComponent<TextMeshProUGUI>().text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
-        healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
+        
 
+        healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
+    }
+
+    [Button]
+    public void EvolveXpText()
+    {
+        experienceText.text = $"{controller.EvolvesList[controller.CurrentEvolve]} xp to evolve";
     }
 
     [Button]
@@ -44,9 +50,9 @@ public class UIController : MonoBehaviour
         }
     }
     [Button]
-    public void UpdateHealthaBar()
+    public void UpdateHealthBar()
     {
-        healthBarFill.fillAmount = controller.plrHealth / 100;
+        healthBarFill.fillAmount = controller.plrHealth / controller.maxPlrHealth;
         healthBarText.text = $"{controller.plrHealth} hp";
     }
 
