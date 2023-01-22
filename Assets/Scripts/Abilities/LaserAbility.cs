@@ -1,18 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public class LaserAbility : MonoBehaviour
 {
-    public float fireRate;
-    public int damage;
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
-    bool isDelayed = true;
-    [SerializeField] Color bulletColor;
     PlayerController playerController;
+    public int abilityDelay;
+    bool isDelayed = true;
     private void Start()
     {
         playerController = transform.parent.GetComponent<PlayerController>();
@@ -20,7 +17,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && isDelayed)
+        if (Input.GetKeyDown(KeyCode.Space) && isDelayed)
         {
             isDelayed = false;
             StartCoroutine(Shoot());
@@ -30,12 +27,8 @@ public class Weapon : MonoBehaviour
     private IEnumerator Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bulletStats = bullet.GetComponent<Bullet>();
-        bulletStats.damage = damage;
-        bulletStats.canDamagePlayer = false;
         bullet.layer = 9;
-        bullet.GetComponent<SpriteRenderer>().color = bulletColor;
-        yield return new WaitForSeconds(60 / (fireRate ));
+        yield return new WaitForSeconds(abilityDelay);
         isDelayed = true;
     }
 }
