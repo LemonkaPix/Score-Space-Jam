@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-    public float fireRate;
-    public int damage;
+    float fireRate;
+    int damage;
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
     bool isDelayed = true;
@@ -20,6 +20,9 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        fireRate = playerController.plrFireRate;
+        damage = playerController.plrDamage;
+
         if (Input.GetButton("Fire1") && isDelayed)
         {
             isDelayed = false;

@@ -131,8 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de68215691202a44b57d902a788c33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 600
-  damage: 0
   firePoint: {fileID: 446598452304642676}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
   bulletColor: {r: 0, g: 1, b: 1, a: 1}
@@ -149,10 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 160
-  Speed: 4
-  Damage: 15
-  FireRate: 45
-  pathId: 3
+  Speed: 3
+  Damage: 25
+  FireRate: 40
+  pathId: 4
   pathEvolution: 0
 --- !u!60 &-4029001105965417770
 PolygonCollider2D:
