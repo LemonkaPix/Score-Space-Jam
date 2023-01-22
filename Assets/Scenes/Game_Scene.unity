@@ -902,7 +902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 146379055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 920417080}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &146379055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1141,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 70, y: 70}
-  m_SizeDelta: {x: 140, y: 140}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285682859
 MonoBehaviour:
@@ -3080,6 +3092,7 @@ MonoBehaviour:
   isDashing: 0
   dashSpeed: 0
   dashDamage: 0
+  pc: {fileID: 920417080}
 --- !u!50 &920417076
 Rigidbody2D:
   serializedVersion: 4
@@ -3155,21 +3168,21 @@ MonoBehaviour:
   - {fileID: 446598453757866112, guid: dec3fa4bd33e908449f483ed463be12d, type: 3}
   - {fileID: 446598453757866112, guid: 9e6cb4394c6181d4eae77b4080b82ab0, type: 3}
   EvolutionCost: 64000000c80000002c01000090010000
-  UpgradePrize: 0
+  UpgradePrize: 10
   HealthLevel: 0
   DamageLevel: 0
   SpeedLevel: 0
   FireRateLevel: 0
   HealthValue: 50
-  DamageValue: 0
-  SpeedValue: 0
-  FireRateValue: 0
+  DamageValue: 50
+  SpeedValue: 2
+  FireRateValue: 50
   maxPlrHealth: 100
   plrHealth: 100
   plrSpeed: 5
   plrDamage: 10
   plrFireRate: 60
-  plrExperience: 0
+  plrExperience: 1000
 --- !u!1 &926744849
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,8 +3353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 70.00002, y: 70}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 70, y: 70}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928985104
 MonoBehaviour:
@@ -3588,7 +3601,8 @@ MonoBehaviour:
   healthBarLerp: {fileID: 1428973993}
   healthBarText: {fileID: 1475768847}
   abilityIcon: {fileID: 1393687621}
-  experienceText: {fileID: 632068347}
+  experienceText: {fileID: 1783285180}
+  evolveText: {fileID: 632068347}
   pathSelector: {fileID: 1384182146}
   fireRateUpBar:
   - {fileID: 245672497}
@@ -4936,8 +4950,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -70, y: -70.00002}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: -70, y: -70}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152731894
 MonoBehaviour:
@@ -5206,11 +5220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.695194
+      value: -17.074926
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.438398
+      value: -8.7390585
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5257,6 +5271,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 920417079}
     m_Modifications:
+    - target: {fileID: 335461867996499803, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 260a9ef41dabada41b7493757b8a6ba1, type: 3}
     - target: {fileID: 335461867996499805, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5867,11 +5885,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.856888
+      value: -24.23662
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.298122
+      value: -13.598783
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5929,7 +5947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1384182147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6731,11 +6749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733571537613194317, guid: 5569c7f1282abea4f8b2f448a98d0f10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.19021
+      value: -24.1
       objectReference: {fileID: 0}
     - target: {fileID: 1733571537613194317, guid: 5569c7f1282abea4f8b2f448a98d0f10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -59.06573
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 1733571537613194317, guid: 5569c7f1282abea4f8b2f448a98d0f10, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7101,7 +7119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564814379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 920417080}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1564814379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7229,11 +7259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.020267
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.39934
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 8324521648611397915, guid: 637ec59a3bb8aa74d807c3eb4dd24d2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8287,8 +8317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70.00002, y: -70.00002}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 70, y: -70}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851237976
 MonoBehaviour:
@@ -8640,7 +8670,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1943888543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 920417080}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1943888543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8898,7 +8940,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2000847329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 920417080}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2000847329
 MonoBehaviour:
   m_ObjectHideFlags: 0

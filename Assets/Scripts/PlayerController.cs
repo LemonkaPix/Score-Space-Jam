@@ -41,9 +41,9 @@ public class PlayerController : MonoBehaviour
     public int FireRateLevel = 0;
 
     public int HealthValue = 50;
-    public int DamageValue = 0;
-    public int SpeedValue = 0;
-    public int FireRateValue = 0;
+    public int DamageValue = 50;
+    public int SpeedValue = 50;
+    public int FireRateValue = 50;
 
     [Header("PlayerStats")]
     public float maxPlrHealth = 100;
@@ -109,9 +109,10 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(gameObject.transform.GetChild(0).gameObject);
                 Instantiate(currentShape, gameObject.transform);
-                Debug.Log("h");
-                maxPlrHealth = evoData.Health;
-                plrHealth += 20;
+                maxPlrHealth = evoData.Health + (HealthLevel * HealthValue);
+                plrHealth += 20 + (HealthLevel * HealthValue);
+                if (plrHealth > maxPlrHealth) plrHealth = maxPlrHealth;
+                uiController.UpdateHealthBar();
                 plrSpeed = evoData.Speed;
                 plrDamage = evoData.Damage;
                 plrFireRate = evoData.FireRate;
@@ -135,7 +136,6 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if(!canTakeDamage) return;
-        Debug.Log("taking damage");
         plrHealth -= damage;
         uiController.UpdateHealthBar();
         if (plrHealth <= 0)
@@ -160,37 +160,41 @@ public class PlayerController : MonoBehaviour
         switch (upgradeIndex)
         {
             case 1: //fire rate
-                if (plrFireRate < 5 && plrExperience >= UpgradePrize)
+                if (FireRateLevel < 5 && plrExperience >= UpgradePrize)
                 {
                     FireRateLevel++;
                     plrExperience -= UpgradePrize;
                 }
                 break;
             case 2: //speed
-                if (plrFireRate < 5 && plrExperience >= UpgradePrize)
+                if (SpeedLevel < 5 && plrExperience >= UpgradePrize)
                 {
-                    FireRateLevel++;
+                    SpeedLevel++;
                     plrExperience -= UpgradePrize;
                 }
                 break;
             case 3: //damage
-                if (plrFireRate < 5 && plrExperience >= UpgradePrize)
+                if (DamageLevel < 5 && plrExperience >= UpgradePrize)
                 {
-                    FireRateLevel++;
+                    DamageLevel++;
                     plrExperience -= UpgradePrize;
+                    //plrDamage += DamageValue;
                 }
                 break;
             case 4: //heath
-                if (plrFireRate < 5 && plrExperience >= UpgradePrize)
+                if (HealthLevel < 5 && plrExperience >= UpgradePrize)
                 {
-                    FireRateLevel++;
+                    HealthLevel++;
                     plrExperience -= UpgradePrize;
-                    plrHealth += 50;
-                    maxPlrHealth += 50;
+                    plrHealth += HealthValue;
+                    maxPlrHealth += HealthValue;
+                    uiController.UpdateHealthBar();
                 }
                 break;
             default:
                 break;
         }
+        uiController.UpgradeBarFiller();
+        uiController.UpdateXP();
     }
 }

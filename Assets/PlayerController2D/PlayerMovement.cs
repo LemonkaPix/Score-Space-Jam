@@ -10,11 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public int dashDamage;
     Vector2 movement;
-    
+    [SerializeField] PlayerController pc;
     void Update()
     {
-        PlayerController pc = gameObject.GetComponent<PlayerController>();
-        moveSpeed = pc.plrSpeed;
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -25,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + new Vector2(transform.up.x, transform.up.y) * dashSpeed * Time.fixedDeltaTime);
         else
                 {
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * (pc.plrSpeed + (pc.SpeedLevel * pc.SpeedValue)) * Time.fixedDeltaTime);
         }
         
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

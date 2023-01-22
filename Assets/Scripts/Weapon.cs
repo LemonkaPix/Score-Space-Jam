@@ -34,11 +34,11 @@ public class Weapon : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bulletStats = bullet.GetComponent<Bullet>();
-        bulletStats.damage = damage;
+        bulletStats.damage = damage + (playerController.DamageLevel * playerController.DamageValue);
         bulletStats.canDamagePlayer = false;
         bullet.layer = 9;
         bullet.GetComponent<SpriteRenderer>().color = bulletColor;
-        yield return new WaitForSeconds(60 / (fireRate ));
+        yield return new WaitForSeconds(60 / (playerController.plrFireRate + (playerController.FireRateLevel * playerController.FireRateValue)));
         isDelayed = true;
     }
 }

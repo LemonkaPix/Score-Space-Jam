@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     [SerializeField] TMP_Text healthBarText;
     [SerializeField] GameObject abilityIcon;
     public TMP_Text experienceText;
+    public TMP_Text evolveText;
     [SerializeField] GameObject pathSelector;
 
     [SerializeField] Image[] fireRateUpBar;
@@ -26,7 +27,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / 100, 3 * Time.deltaTime);
+        healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / controller.maxPlrHealth, 3 * Time.deltaTime);
     }
 
     [Button]
@@ -40,11 +41,11 @@ public class UIController : MonoBehaviour
 
     public void EvolveXpText()
     {
-        experienceText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
+        evolveText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
     }
 
     [Button]
-    void UpgradeBarFiller()
+    public void UpgradeBarFiller()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -59,6 +60,10 @@ public class UIController : MonoBehaviour
     {
         healthBarFill.fillAmount = controller.plrHealth / controller.maxPlrHealth;
         healthBarText.text = $"{controller.plrHealth} hp";
+    }
+    public void UpdateXP()
+    {
+        experienceText.text = $"{controller.plrExperience} xp";
     }
 
 }
