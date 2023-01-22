@@ -7,12 +7,14 @@ public class LaserAbility : MonoBehaviour
 {
     [SerializeField] Transform firePoint;
     public GameObject bulletPrefab;
+    [SerializeField] Sprite abilitySprite;
     PlayerController playerController;
-    public int abilityDelay;
+    public float abilityCooldown;
     bool isDelayed = true;
     private void Start()
     {
         playerController = transform.parent.GetComponent<PlayerController>();
+        playerController.changeUiImage(abilitySprite);
     }
 
     void Update()
@@ -28,7 +30,8 @@ public class LaserAbility : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.layer = 9;
-        yield return new WaitForSeconds(abilityDelay);
+        playerController.uiCooldown(abilityCooldown);
+        yield return new WaitForSeconds(abilityCooldown);
         isDelayed = true;
     }
 }
