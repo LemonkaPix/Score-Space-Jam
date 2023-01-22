@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     public float fireRate;
     public int damage;
-    [SerializeField] Transform firePoint;
+    [SerializeField] Transform[] firePoints;
     public GameObject bulletPrefab;
     bool isDelayed = true;
     [SerializeField] float attackRange;
@@ -84,10 +84,13 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Bullet>().damage = damage;
-        bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        bullet.layer = 8;
+        foreach (var firePoint in firePoints)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().damage = damage;
+            bullet.GetComponent<Bullet>().speed = bulletSpeed;
+            bullet.layer = 8;
+        }
         yield return new WaitForSeconds(60 / fireRate);
         isDelayed = true;
     }
