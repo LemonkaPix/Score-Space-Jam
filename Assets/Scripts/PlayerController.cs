@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using NaughtyAttributes;
 using Unity.VisualScripting;
+using UnityEngine.Rendering.Universal;
 
 public enum Evolve
 {
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsPanel;
     [HideInInspector] public bool IsPaused = false;
+    [SerializeField] GameObject gameUi;
 
     bool onRamCooldown;
     [HideInInspector] public int ramDamage;
@@ -51,11 +54,13 @@ public class PlayerController : MonoBehaviour
             IsPaused = !IsPaused;
             if (IsPaused)
             {
+                gameUi.SetActive(false);
                 pauseMenu.SetActive(true);
                 Time.timeScale = 0;
             }
             else
             {
+                gameUi.SetActive(true);
                 pauseMenu.SetActive(false);
                 optionsPanel.SetActive(false);
                 Time.timeScale = 1;
