@@ -8,11 +8,18 @@ public class BombAbility : MonoBehaviour
     public GameObject abilityPrefab;
     public Sprite abilitySprite;
     [SerializeField] Transform firePoint;
+    PlayerController playerController;
 
     [Header("Stats")]
     public bool onCooldown;
     [SerializeField] int damage;
-    [SerializeField] int abilityCooldown;
+    [SerializeField] float abilityCooldown;
+
+    void Start()
+    {
+        playerController = transform.parent.GetComponent<PlayerController>();
+        playerController.changeUiImage(abilitySprite);
+    }
 
     IEnumerator AbilityCooldown()
     {
@@ -20,6 +27,7 @@ public class BombAbility : MonoBehaviour
         bombClone.name = "Bomb";
         onCooldown = true;
 
+        playerController.uiCooldown(abilityCooldown);
         yield return new WaitForSeconds(abilityCooldown);
         onCooldown = false;
     }

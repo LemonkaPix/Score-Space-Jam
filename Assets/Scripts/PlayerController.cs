@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum Evolve
@@ -52,10 +53,32 @@ public class PlayerController : MonoBehaviour
     public int plrDamage = 10;
     public float plrFireRate = 60;
     public int plrExperience = 0;
+    public int secondsPassed = 0;
+    public float score = 0;
+
+
+    IEnumerator timePassed()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            secondsPassed++;
+        }
+    }
+
+    void Start()
+    {
+        StartCoroutine(timePassed());
+    }
 
     private void Update()
     {
 
+        if (currentPathEvo == 1)
+        {
+            gameUi.transform.Find("Ability").gameObject.SetActive(true);
+            gameUi.transform.Find("Upgrades").gameObject.SetActive(true);
+        }   
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
@@ -74,6 +97,16 @@ public class PlayerController : MonoBehaviour
             }
         }
         if (plrExperience == EvolutionCost[currentPathEvo]) Evolution(currentPath);
+    }
+
+    public void changeUiImage(Sprite sprite) 
+    {
+        uiController.changeAbilityImage(sprite);
+    }
+
+    public void uiCooldown(float cooldown)
+    {
+        uiController.abilityCooldown(cooldown);
     }
 
     IEnumerator ramCooldown()
@@ -147,6 +180,19 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("you died mother fucker");
+
+        if (currentPath != 0) score += 3000;
+        score += currentPathEvo * 3000;
+        score += secondsPassed * 5;
+
+        int minutesAlive = secondsPassed / 60;
+
+        GameObject deathScreen = gameUi.transform.Find("DeathScreen").gameObject;
+        deathScreen.SetActive(true);
+        deathScreen.transform.Find("timeAlive").GetComponent<TextMeshProUGUI>().text = $"You were alive for: {(minutesAlive != 0 ? minutesAlive : "")} minutes and {secondsPassed} seconds";
+        deathScreen.transform.Find("Score").GetComponent<TextMeshProUGUI>().text = $"Your score is: {score}";
+
+
     }
 
     public void AddExperience(int exp)

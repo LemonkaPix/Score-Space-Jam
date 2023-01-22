@@ -7,13 +7,20 @@ public class DashAbility : MonoBehaviour
     [Header("Control variables")]
     public GameObject effectPrefab;
     public Sprite abilitySprite;
+    PlayerController playerController;
 
     [Header("Stats")]
     public bool onCooldown;
-    [SerializeField] int abilityCooldown;
+    [SerializeField] float abilityCooldown;
     [SerializeField] float abilityLifeTime;
     [SerializeField] int damage;
     [SerializeField] float dashSpeed;
+
+    void Start()
+    {
+        playerController = transform.parent.GetComponent<PlayerController>();
+        playerController.changeUiImage(abilitySprite);
+    }
 
     IEnumerator AbilityCooldown()
     {
@@ -34,6 +41,7 @@ public class DashAbility : MonoBehaviour
         plrMovement.dashDamage = 0;
         Destroy(trail);
 
+        playerController.uiCooldown(abilityCooldown);
         yield return new WaitForSeconds(abilityCooldown);
         onCooldown = false;
     }
