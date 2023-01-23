@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
-using UnityEditor.Timeline.Actions;
 using TMPro;
-using Unity.VisualScripting;
 
 public class LeaderBoard : MonoBehaviour
 {

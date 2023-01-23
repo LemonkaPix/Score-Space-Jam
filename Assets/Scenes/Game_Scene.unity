@@ -6689,6 +6689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle
       objectReference: {fileID: 0}
+    - target: {fileID: 335461867996499806, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee322f9ac220e634a9b62b5a0649b3f3, type: 3}
 --- !u!1 &1258313133
@@ -7074,6 +7078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playersNames: {fileID: 449193477}
   playersScores: {fileID: 337752963}
+  mainMenuPanel: {fileID: 0}
 --- !u!114 &1336918013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7094,6 +7099,7 @@ MonoBehaviour:
   - {fileID: 24100000, guid: a525379f2d0800140a50199926db0dae, type: 2}
   - {fileID: 24100000, guid: ccd86969c366ad140a67b8e3388da498, type: 2}
   leaderboard: {fileID: 1336918012}
+  playerName: {fileID: 0}
 --- !u!1 &1342319503
 GameObject:
   m_ObjectHideFlags: 0
@@ -8217,7 +8223,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550623196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -8235,7 +8241,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.589
   m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
