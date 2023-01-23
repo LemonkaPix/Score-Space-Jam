@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,8 @@ public class ShieldAbility : MonoBehaviour
     }
 
     IEnumerator AbilityCooldown()
-    {        
+    {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.EnviromentSource, SoundManager.Instance.EnviromentCollection.clips[5]);
         GameObject shieldClone = Instantiate(abilityPrefab, transform.position, transform.rotation, transform.parent);
         shieldClone.name = "Shield";
         Weapon weapon = transform.GetComponent<Weapon>();

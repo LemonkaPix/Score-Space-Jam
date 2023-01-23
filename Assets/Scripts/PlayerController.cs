@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Leaderboard")]
     [SerializeField] LeaderBoard leaderboard;
+
+    //sounds
+
 
     [Header("UI")]
     [SerializeField] GameObject pauseMenu;
@@ -180,6 +184,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if(!canTakeDamage) return;
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.PlayerSource, SoundManager.Instance.PlayerCollection.clips[1]);
         plrHealth -= damage;
         uiController.UpdateHealthBar();
         if (plrHealth <= 0)
@@ -190,6 +195,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Die()
     {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.PlayerSource, SoundManager.Instance.PlayerCollection.clips[0]);
         isGameOver = true;
         stopwatch.Stop();
         Time.timeScale = 0f;

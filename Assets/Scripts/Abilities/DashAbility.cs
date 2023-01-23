@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class DashAbility : MonoBehaviour
     IEnumerator AbilityCooldown()
     {
         onCooldown = true;
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.EnviromentSource, SoundManager.Instance.EnviromentCollection.clips[4]);
 
         PlayerMovement plrMovement = transform.parent.GetComponent<PlayerMovement>();
 

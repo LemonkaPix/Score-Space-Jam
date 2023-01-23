@@ -1,14 +1,17 @@
+using Managers.Sounds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class Weapon : MonoBehaviour
 {
     float fireRate;
     int damage;
     [SerializeField] Transform firePoint;
+    SoundManager soundManager;
     public GameObject bulletPrefab;
     bool isDelayed = true;
     [SerializeField] Color bulletColor;
@@ -16,6 +19,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         playerController = transform.parent.GetComponent<PlayerController>();
+        soundManager = SoundManager.Instance;
     }
 
     void Update()
@@ -32,6 +36,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2]);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bulletStats = bullet.GetComponent<Bullet>();
         bulletStats.damage = damage + (playerController.DamageLevel * playerController.DamageValue);

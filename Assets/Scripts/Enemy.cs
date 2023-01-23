@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] EnemyType enemyType;
     public int health = 100;
 
+    SoundManager soundManager = SoundManager.Instance;
+
     public float fireRate;
     public int damage;
     [SerializeField] Transform[] firePoints;
@@ -39,6 +42,7 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        soundManager.PlayOneShoot(soundManager.EnviromentSource, soundManager.EnviromentCollection.clips[0]);
         health -= damage;
         StartCoroutine(DamageVisual());
         if (health <= 0)
@@ -57,6 +61,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        soundManager.PlayOneShoot(soundManager.EnviromentSource, soundManager.EnviromentCollection.clips[1]);
         Destroy(gameObject);
         playerController.AddExperience(experience);
     }
@@ -92,6 +97,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        soundManager.PlayOneShoot(soundManager.EnviromentSource, soundManager.EnviromentCollection.clips[2]);
         foreach (var firePoint in firePoints)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

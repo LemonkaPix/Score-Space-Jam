@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: PlayerCollection
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: a525379f2d0800140a50199926db0dae, type: 2}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 5db59556117a4134e9639839350e0d22, type: 3}
+  - {fileID: 8300000, guid: 60eb927b456ec9b4cb31f00908208d9d, type: 3}
+  - {fileID: 8300000, guid: 1d1e7a0a182cb1b42858377820f32530, type: 3}

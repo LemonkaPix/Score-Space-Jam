@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: UICollection
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: ccd86969c366ad140a67b8e3388da498, type: 2}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 27c547d0efc59e14f8f032dce55b12b9, type: 3}
+  - {fileID: 8300000, guid: 6f1521089df1f4a4ba9dbc51bdc4a05a, type: 3}

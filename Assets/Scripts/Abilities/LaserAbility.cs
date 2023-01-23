@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ public class LaserAbility : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.EnviromentSource, SoundManager.Instance.EnviromentCollection.clips[6]);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.layer = 9;
         playerController.uiCooldown(abilityCooldown);

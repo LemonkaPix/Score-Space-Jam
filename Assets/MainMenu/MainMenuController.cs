@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,5 +23,14 @@ public class MainMenuController : MonoBehaviour
     {
         leaderboard.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void CancelSound()
+    {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[0]);
+    }
+    public void ConfirmSound()
+    {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[1]);
     }
 }

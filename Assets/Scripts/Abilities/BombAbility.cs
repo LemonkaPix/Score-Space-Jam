@@ -1,3 +1,4 @@
+using Managers.Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class BombAbility : MonoBehaviour
 
     IEnumerator AbilityCooldown()
     {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.EnviromentSource, SoundManager.Instance.EnviromentCollection.clips[3]);
         GameObject bombClone = Instantiate(abilityPrefab, firePoint.position, firePoint.rotation);
         bombClone.name = "Bomb";
         onCooldown = true;
