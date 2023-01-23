@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject deathScreen;
     [SerializeField] TMP_Text timeAlive;
     [SerializeField] TMP_Text totalScore;
+    public bool isGameOver = false;
 
     bool onRamCooldown;
     [HideInInspector] public int ramDamage;
@@ -39,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Upgrades")]
     public int UpgradePrize;
-    public int HealthLevel = 0;
-    public int DamageLevel = 0;
-    public int SpeedLevel = 0;
-    public int FireRateLevel = 0;
+    [HideInInspector] public int HealthLevel = 0;
+    [HideInInspector] public int DamageLevel = 0;
+    [HideInInspector] public int SpeedLevel = 0;
+    [HideInInspector] public int FireRateLevel = 0;
 
     public int HealthValue = 50;
     public int DamageValue = 50;
@@ -56,21 +58,23 @@ public class PlayerController : MonoBehaviour
     public int plrDamage = 10;
     public float plrFireRate = 60;
     public int plrExperience = 0;
-    public int secondsPassed = 0;
+    //public int secondsPassed = 0;
     public float score = 0;
+    Stopwatch stopwatch = new Stopwatch();
 
-    IEnumerator timePassed()
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(1f);
-            secondsPassed++;
-        }
-    }
+    //IEnumerator timePassed()
+    //{
+    //    while(true)
+    //    {
+    //        yield return new WaitForSeconds(1f);
+    //        secondsPassed++;
+    //    }
+    //}
 
     void Start()
     {
-        StartCoroutine(timePassed());
+        //StartCoroutine(timePassed());
+        stopwatch.Start();
     }
 
     private void Update()
@@ -81,18 +85,20 @@ public class PlayerController : MonoBehaviour
             gameUi.transform.Find("Ability").gameObject.SetActive(true);
             gameUi.transform.Find("Upgrades").gameObject.SetActive(true);
         }   
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
         {
             IsPaused = !IsPaused;
             if (IsPaused)
             {
-                gameUi.SetActive(false);
+                stopwatch.Stop();
+                //gameUi.SetActive(false);
                 pauseMenu.SetActive(true);
                 Time.timeScale = 0;
             }
             else
             {
-                gameUi.SetActive(true);
+                stopwatch.Start();
+                //gameUi.SetActive(true);
                 pauseMenu.SetActive(false);
                 optionsPanel.SetActive(false);
                 Time.timeScale = 1;
@@ -181,17 +187,16 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        isGameOver = true;
+        stopwatch.Stop();
+        Time.timeScale = 0f;
         if (currentPath != 0) score += 3000;
         score += currentPathEvo * 3000;
-        score += secondsPassed * 5;
-
-        int minutesAlive = secondsPassed / 60;
-
+        score += stopwatch.Elapsed.Seconds * 5;
         
         deathScreen.SetActive(true);
-        timeAlive.text = $"You were alive for: {(minutesAlive != 0 ? minutesAlive : "")} minutes and {secondsPassed} seconds";
+        timeAlive.text = $"You were alive for: {(stopwatch.Elapsed.Minutes != 0 ? stopwatch.Elapsed.Minutes : "")} minutes and {stopwatch.Elapsed.Seconds} seconds";
         totalScore.text = $"Your score is: {score}";
-
 
     }
 

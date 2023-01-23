@@ -102,7 +102,7 @@ MonoBehaviour:
   enemyType: 0
   health: 1
   fireRate: 60
-  damage: 1
+  damage: 100
   firePoints: []
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
   experience: 20
