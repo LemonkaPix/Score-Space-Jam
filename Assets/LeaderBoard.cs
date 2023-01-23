@@ -40,7 +40,7 @@ public class LeaderBoard : MonoBehaviour
     public IEnumerator FetchTopHighscoresRoutine()
     {
         bool done = false;
-        LootLockerSDKManager.GetScoreListMain(leaderboradID, 10, 0, (response) =>
+        LootLockerSDKManager.GetScoreListMain(leaderboradID, 29, 0, (response) =>
         {
             if (response.success)
             {
