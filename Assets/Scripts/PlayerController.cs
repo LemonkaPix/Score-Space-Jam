@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool IsPaused = false;
     [SerializeField] GameObject gameUi;
     [SerializeField] GameObject PathSelection;
+    [SerializeField] GameObject deathScreen;
+    [SerializeField] TMP_Text timeAlive;
+    [SerializeField] TMP_Text totalScore;
 
     bool onRamCooldown;
     [HideInInspector] public int ramDamage;
@@ -55,7 +58,6 @@ public class PlayerController : MonoBehaviour
     public int plrExperience = 0;
     public int secondsPassed = 0;
     public float score = 0;
-
 
     IEnumerator timePassed()
     {
@@ -179,18 +181,16 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("you died mother fucker");
-
         if (currentPath != 0) score += 3000;
         score += currentPathEvo * 3000;
         score += secondsPassed * 5;
 
         int minutesAlive = secondsPassed / 60;
 
-        GameObject deathScreen = gameUi.transform.Find("DeathScreen").gameObject;
+        
         deathScreen.SetActive(true);
-        deathScreen.transform.Find("timeAlive").GetComponent<TextMeshProUGUI>().text = $"You were alive for: {(minutesAlive != 0 ? minutesAlive : "")} minutes and {secondsPassed} seconds";
-        deathScreen.transform.Find("Score").GetComponent<TextMeshProUGUI>().text = $"Your score is: {score}";
+        timeAlive.text = $"You were alive for: {(minutesAlive != 0 ? minutesAlive : "")} minutes and {secondsPassed} seconds";
+        totalScore.text = $"Your score is: {score}";
 
 
     }
