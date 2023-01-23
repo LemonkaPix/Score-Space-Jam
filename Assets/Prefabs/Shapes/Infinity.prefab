@@ -141,7 +141,7 @@ MonoBehaviour:
   abilityCooldown: 3
   abilityLifeTime: 0.5
   damage: 50
-  dashSpeed: 15
+  dashSpeed: 25
 --- !u!58 &4123250434901231960
 CircleCollider2D:
   m_ObjectHideFlags: 0

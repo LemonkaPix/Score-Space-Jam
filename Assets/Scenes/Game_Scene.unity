@@ -3605,6 +3605,7 @@ MonoBehaviour:
   waveText: {fileID: 1475578802}
   waveCooldown: 2.5
   cycleColldown: 5
+  waveDifficulty: 1
 --- !u!1 &708572743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,6 +4362,7 @@ MonoBehaviour:
   gameUi: {fileID: 964912411}
   PathSelection: {fileID: 1384182146}
   deathScreen: {fileID: 1742334210}
+  hitParticle: {fileID: 4016206414610199851, guid: 183881d6d5dfb7d46bba214ff24fd5a5, type: 3}
   timeAlive: {fileID: 2081742146}
   totalScore: {fileID: 708572745}
   isGameOver: 0

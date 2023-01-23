@@ -204,5 +204,5 @@ MonoBehaviour:
   abilitySprite: {fileID: 21300000, guid: 0e4e58db936635b48bb0e305c41ea0bf, type: 3}
   onCooldown: 0
   onUse: 0
-  ramDamage: 0
-  abilitySpeedBoost: 0
+  ramDamage: 40
+  abilitySpeedBoost: 15

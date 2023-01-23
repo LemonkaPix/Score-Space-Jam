@@ -61,6 +61,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.GetComponent<Weapon>() && !canDamagePlayer) return;
         if (collision.GetComponent<Bullet>()) return;
         if (collision.GetComponent<Enemy>() && canDamagePlayer) return;

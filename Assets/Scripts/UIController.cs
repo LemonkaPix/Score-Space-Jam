@@ -58,6 +58,7 @@ public class UIController : MonoBehaviour
         controller.currentPath = index;
         controller.spawnFigure();
         pathSelector.SetActive(false);
+        controller.plrExperience = 0;
     }
 
     public void EvolveXpText()
