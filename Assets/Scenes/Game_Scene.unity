@@ -4429,11 +4429,13 @@ MonoBehaviour:
   DamageValue: 50
   SpeedValue: 2
   FireRateValue: 50
+  BulletSpeeedValue: 2
   maxPlrHealth: 100
   plrHealth: 100
   plrSpeed: 5
   plrDamage: 10
   plrFireRate: 60
+  plrBulletSpeed: 8
   plrExperience: 0
   score: 0
 --- !u!1 &926744849
