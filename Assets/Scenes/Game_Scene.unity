@@ -1835,8 +1835,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2576,8 +2576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4386,21 +4386,21 @@ MonoBehaviour:
   - {fileID: 446598453757866112, guid: dec3fa4bd33e908449f483ed463be12d, type: 3}
   - {fileID: 446598453757866112, guid: 9e6cb4394c6181d4eae77b4080b82ab0, type: 3}
   EvolutionCost: 64000000c80000002c01000090010000
-  UpgradePrize: 10
+  UpgradePrize: 25
   HealthLevel: 0
   DamageLevel: 0
   SpeedLevel: 0
   FireRateLevel: 0
-  HealthValue: 50
+  HealthValue: 20
   DamageValue: 50
   SpeedValue: 2
   FireRateValue: 50
   BulletSpeeedValue: 2
   maxPlrHealth: 100
-  plrHealth: 100
-  plrSpeed: 5
-  plrDamage: 10
-  plrFireRate: 60
+  plrHealth: 20
+  plrSpeed: 0.5
+  plrDamage: 2
+  plrFireRate: 2
   plrBulletSpeed: 8
   plrExperience: 0
   score: 0
