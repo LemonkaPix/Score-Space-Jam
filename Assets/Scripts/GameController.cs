@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -11,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] Transform enemiesParent;
     [SerializeField] Transform player;
+    [SerializeField] TMP_Text waveText;
     [SerializeField] float waveCooldown = 5;
     [SerializeField] float cycleColldown = 5;
     List<Transform> spawnPointsList = new List<Transform>();
@@ -22,6 +24,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         enemiesToSpawn.Add(enemies[0]);
+        waveText.text = "wave: " + wave;
     }
     private void Update()
     {
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
         yield return new WaitUntil(() => enemiesParent.childCount == 0);
         Debug.Log("wave complete");
         wave++;
+        waveText.text = "wave: " + wave;
         waveIsEnd = true;
     }
 }

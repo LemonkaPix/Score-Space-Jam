@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-        if (plrExperience == EvolutionCost[currentPathEvo]) Evolution(currentPath);
+        if (plrExperience >= EvolutionCost[currentPathEvo]) Evolution(currentPath);
     }
 
     public void changeUiImage(Sprite sprite) 
