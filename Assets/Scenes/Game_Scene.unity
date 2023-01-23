@@ -4392,15 +4392,15 @@ MonoBehaviour:
   SpeedLevel: 0
   FireRateLevel: 0
   HealthValue: 20
-  DamageValue: 50
-  SpeedValue: 2
-  FireRateValue: 50
+  DamageValue: 2
+  SpeedValue: 0
+  FireRateValue: 2
   BulletSpeeedValue: 2
   maxPlrHealth: 100
-  plrHealth: 20
-  plrSpeed: 0.5
-  plrDamage: 2
-  plrFireRate: 2
+  plrHealth: 100
+  plrSpeed: 5
+  plrDamage: 20
+  plrFireRate: 60
   plrBulletSpeed: 8
   plrExperience: 0
   score: 0
