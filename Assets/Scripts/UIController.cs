@@ -37,18 +37,20 @@ public class UIController : MonoBehaviour
         abilityIcon.GetComponent<Image>().sprite = sprite; 
     }
 
-    public void abilityCooldown(float cooldown)
+    public IEnumerator abilityCooldown(float cooldown)
     {
         float startTime = Time.time;
-
         Image cooldownOverlay = abilityIcon.transform.parent.Find("load").GetComponent<Image>();
+        cooldownOverlay.gameObject.SetActive(true);
         cooldownOverlay.fillAmount = 0;
 
         while(cooldownOverlay.fillAmount != 1)
         {
             float timePassed = Time.time - startTime;
             cooldownOverlay.fillAmount = Mathf.Lerp(cooldownOverlay.fillAmount, timePassed / cooldown, 3 * Time.deltaTime);
+            yield return new WaitForSeconds(0f);
         }
+        cooldownOverlay.gameObject.SetActive(false);
     }
 
     public void choosePath(int index) // 1 - triangle, 2 - square, 3 - rhomb, 4 - hexagon

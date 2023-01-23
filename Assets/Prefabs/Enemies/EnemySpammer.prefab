@@ -127,13 +127,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 17542367066168184}
   enemyType: 1
-  health: 1
+  health: 100
   fireRate: 180
-  damage: 20
+  damage: 10
   firePoints:
   - {fileID: 17542367900265019}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
-  experience: 0
+  experience: 50
   attackRange: 10
   speed: 3
   bulletSpeed: 8

@@ -105,9 +105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8592295196333465906}
   enemyType: 3
-  health: 1
+  health: 80
   fireRate: 30
-  damage: 20
+  damage: 10
   firePoints:
   - {fileID: 8592295197716650696}
   - {fileID: 8592295198007929740}
@@ -115,7 +115,7 @@ MonoBehaviour:
   - {fileID: 8592295197314902079}
   - {fileID: 8592295197600450293}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
-  experience: 0
+  experience: 35
   attackRange: 10
   speed: 3
   bulletSpeed: 8
