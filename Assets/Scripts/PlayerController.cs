@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] UIController uiController;
 
+    [Header("Leaderboard")]
+    [SerializeField] LeaderBoard leaderboard;
+
     [Header("UI")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsPanel;
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour
     public float plrFireRate = 60;
     public int plrExperience = 0;
     //public int secondsPassed = 0;
-    public float score = 0;
+    public int score = 0;
     Stopwatch stopwatch = new Stopwatch();
 
     //IEnumerator timePassed()
@@ -181,11 +184,11 @@ public class PlayerController : MonoBehaviour
         uiController.UpdateHealthBar();
         if (plrHealth <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
         isGameOver = true;
         stopwatch.Stop();
@@ -197,6 +200,7 @@ public class PlayerController : MonoBehaviour
         deathScreen.SetActive(true);
         timeAlive.text = $"You were alive for: {(stopwatch.Elapsed.Minutes != 0 ? stopwatch.Elapsed.Minutes : "")} minutes and {stopwatch.Elapsed.Seconds} seconds";
         totalScore.text = $"Your score is: {score}";
+        yield return leaderboard.SubmitScoreRoutine(score);
 
     }
 

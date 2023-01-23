@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] GameObject optionsPanel;
+    [SerializeField] GameObject leaderboard;
     public void ExitGame()
     {
         Application.Quit();
@@ -15,6 +16,11 @@ public class MainMenuController : MonoBehaviour
     public void ShowOptionsPanel()
     {
         optionsPanel.SetActive(true);
+        gameObject.SetActive(false);
+    }
+    public void ShowLeaderboard()
+    {
+        leaderboard.SetActive(true);
         gameObject.SetActive(false);
     }
 }

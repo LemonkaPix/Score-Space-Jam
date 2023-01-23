@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     bool waveIsEnd = true;
     private void Start()
     {
+        Time.timeScale = 1;
         enemiesToSpawn.Add(enemies[0]);
     }
     private void Update()
