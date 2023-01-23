@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.305, g: 0.305, b: 0.305, a: 0.8901961}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4770,7 +4770,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -133}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 566.3406, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127521668
 MonoBehaviour:
@@ -4792,7 +4792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: evo-shape
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c49c8f6803c85eb47a47e2bb6afea8cc, type: 2}
   m_sharedMaterial: {fileID: 4039492701491641456, guid: c49c8f6803c85eb47a47e2bb6afea8cc, type: 2}

@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public int DamageValue = 50;
     public int SpeedValue = 50;
     public int FireRateValue = 50;
+    public int BulletSpeeedValue = 2;
 
     [Header("PlayerStats")]
     public float maxPlrHealth = 100;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public float plrSpeed = 5f;
     public int plrDamage = 10;
     public float plrFireRate = 60;
+    public float plrBulletSpeed = 8;
     public int plrExperience = 0;
     public int score = 0;
     Stopwatch stopwatch = new Stopwatch();
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-        if (plrExperience == EvolutionCost[currentPathEvo]) Evolution(currentPath);
+        if (plrExperience >= EvolutionCost[currentPathEvo]) Evolution(currentPath);
     }
 
     public void changeUiImage(Sprite sprite) 
@@ -140,7 +142,8 @@ public class PlayerController : MonoBehaviour
 
 
     public void spawnFigure()
-    {   
+    {
+        SoundManager.Instance.PlayOneShoot(SoundManager.Instance.EnviromentSource, SoundManager.Instance.EnviromentCollection.clips[7]);
         for (int i = 0; i < Shapes.Length; i++)
         {
             GameObject currentShape = Shapes[i];
