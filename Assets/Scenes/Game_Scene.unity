@@ -3589,7 +3589,7 @@ MonoBehaviour:
   - {fileID: 413165080}
   enemiesParent: {fileID: 1523570046}
   player: {fileID: 920417079}
-  waveCooldown: 5
+  waveCooldown: 2.5
   cycleColldown: 5
 --- !u!1 &708572743
 GameObject:
@@ -3818,7 +3818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &802430172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4056,7 +4056,7 @@ GameObject:
   - component: {fileID: 895927898}
   - component: {fileID: 895927897}
   m_Layer: 5
-  m_Name: Ability
+  m_Name: AbilityIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4830,7 +4830,7 @@ MonoBehaviour:
   healthBarFill: {fileID: 1419280657}
   healthBarLerp: {fileID: 1428973993}
   healthBarText: {fileID: 1475768847}
-  abilityIcon: {fileID: 1393687621}
+  abilityIcon: {fileID: 895927895}
   experienceText: {fileID: 1783285180}
   evolveText: {fileID: 632068347}
   pathSelector: {fileID: 1384182146}
@@ -8252,7 +8252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1550623197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8298,7 +8298,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.589
+  m_FillAmount: 0
   m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

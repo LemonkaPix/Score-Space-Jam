@@ -16,6 +16,7 @@ public enum Evolve
 
 public class PlayerController : MonoBehaviour
 {
+
     [SerializeField] UIController uiController;
 
     [Header("Leaderboard")]
@@ -65,22 +66,12 @@ public class PlayerController : MonoBehaviour
     public int plrDamage = 10;
     public float plrFireRate = 60;
     public int plrExperience = 0;
-    //public int secondsPassed = 0;
     public int score = 0;
     Stopwatch stopwatch = new Stopwatch();
 
-    //IEnumerator timePassed()
-    //{
-    //    while(true)
-    //    {
-    //        yield return new WaitForSeconds(1f);
-    //        secondsPassed++;
-    //    }
-    //}
 
     void Start()
     {
-        //StartCoroutine(timePassed());
         stopwatch.Start();
     }
 
@@ -121,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     public void uiCooldown(float cooldown)
     {
-        uiController.abilityCooldown(cooldown);
+        StartCoroutine(uiController.abilityCooldown(cooldown));
     }
 
     IEnumerator ramCooldown()
@@ -204,7 +195,7 @@ public class PlayerController : MonoBehaviour
         score += stopwatch.Elapsed.Seconds * 5;
         
         deathScreen.SetActive(true);
-        timeAlive.text = $"You were alive for: {(stopwatch.Elapsed.Minutes != 0 ? stopwatch.Elapsed.Minutes : "")} minutes and {stopwatch.Elapsed.Seconds} seconds";
+        timeAlive.text = $"You were alive for: {(stopwatch.Elapsed.Minutes != 0 ? stopwatch.Elapsed.Minutes + " minutes and " : "")}{stopwatch.Elapsed.Seconds} seconds";
         totalScore.text = $"Your score is: {score}";
         yield return leaderboard.SubmitScoreRoutine(score);
 
