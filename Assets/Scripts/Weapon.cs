@@ -36,10 +36,11 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2]);
+        soundManager.PlayOneShoot(soundManager.EnviromentSource, soundManager.EnviromentCollection.clips[2]);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bulletStats = bullet.GetComponent<Bullet>();
         bulletStats.damage = damage + (playerController.DamageLevel * playerController.DamageValue);
+        bulletStats.speed =  playerController.plrBulletSpeed + (playerController.FireRateLevel * playerController.BulletSpeeedValue);
         bulletStats.canDamagePlayer = false;
         bullet.layer = 9;
         bullet.GetComponent<SpriteRenderer>().color = bulletColor;
