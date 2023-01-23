@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         healthBarLerp.fillAmount = Mathf.Lerp(healthBarLerp.fillAmount, controller.plrHealth / controller.maxPlrHealth, 3 * Time.deltaTime);
+        EvolveXpText();
     }
 
     [Button]
@@ -63,7 +64,14 @@ public class UIController : MonoBehaviour
 
     public void EvolveXpText()
     {
-        evolveText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
+        if (controller.currentPathEvo < 2)
+        {
+            evolveText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
+        }
+        else
+        {
+            evolveText.text = "You can't evolve further";
+        }
     }
 
     [Button]

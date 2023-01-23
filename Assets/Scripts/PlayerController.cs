@@ -118,17 +118,11 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(uiController.abilityCooldown(cooldown));
     }
 
-    IEnumerator ramCooldown()
-    {
-        onRamCooldown = true;
-        yield return new WaitForSeconds(0.5f);
-        onRamCooldown = false;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy == null || onRamCooldown) return;
+        if (enemy == null) return;
         
         PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
         if (playerMovement.isDashing == false && !isDuringRam) { ramDamage = 0; return; }
@@ -136,7 +130,6 @@ public class PlayerController : MonoBehaviour
         if (playerMovement.isDashing) ramDamage = playerMovement.dashDamage;
 
         enemy.TakeDamage(ramDamage);
-        StartCoroutine(ramCooldown());
 
     }
 
