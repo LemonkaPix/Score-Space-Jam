@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 446598453757866119}
   - component: {fileID: 446598453757866118}
   - component: {fileID: 3933442048514939538}
-  - component: {fileID: -4029001105965417770}
+  - component: {fileID: 3517655770487801825}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: Untagged
@@ -152,8 +152,8 @@ MonoBehaviour:
   FireRate: 40
   pathId: 4
   pathEvolution: 0
---- !u!60 &-4029001105965417770
-PolygonCollider2D:
+--- !u!58 &3517655770487801825
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,20 +166,5 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.25, y: 0.43359375}
-      - {x: -0.5, y: 0}
-      - {x: -0.25, y: -0.43359375}
-      - {x: 0.25, y: -0.43359375}
-      - {x: 0.5, y: 0}
-      - {x: 0.25, y: 0.43359375}
+  serializedVersion: 2
+  m_Radius: 0.9

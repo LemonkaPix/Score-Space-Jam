@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2035235587198446444}
   - component: {fileID: -6159508610409373743}
   - component: {fileID: -3267170262136750331}
-  - component: {fileID: 8193318950763726666}
+  - component: {fileID: 8254035138045446113}
   m_Layer: 0
   m_Name: Trapez
   m_TagString: Untagged
@@ -140,8 +140,8 @@ MonoBehaviour:
   onCooldown: 0
   damage: 100
   abilityCooldown: 30
---- !u!58 &8193318950763726666
-CircleCollider2D:
+--- !u!60 &8254035138045446113
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,8 +154,23 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.625, y: 0.53125}
+      - {x: -1, y: -0.1875}
+      - {x: -1, y: -0.53125}
+      - {x: 1, y: -0.53125}
+      - {x: 1, y: -0.1875}
+      - {x: 0.625, y: 0.53125}
 --- !u!1 &2035235587705269006
 GameObject:
   m_ObjectHideFlags: 0
