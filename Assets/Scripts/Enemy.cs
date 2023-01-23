@@ -20,13 +20,14 @@ public class Enemy : MonoBehaviour
     PlayerController playerController;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] EnemyType enemyType;
-    public int health = 100;
+    public float health = 100;
 
     SoundManager soundManager = SoundManager.Instance;
 
     public float fireRate;
-    public int damage;
+    public float damage;
     [SerializeField] Transform[] firePoints;
+    [SerializeField] GameObject[] hitParticles;
     public GameObject bulletPrefab;
     bool isDelayed = true;
     [SerializeField] int experience;
@@ -61,6 +62,25 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        switch (enemyType)
+        {
+            case EnemyType.body:
+                Instantiate(hitParticles[0], transform.position, transform.rotation);
+                break;
+            case EnemyType.shooter:
+                Instantiate(hitParticles[1], transform.position, transform.rotation);
+                break;
+            case EnemyType.shotgunner:
+                Instantiate(hitParticles[2], transform.position, transform.rotation);
+                break;
+            case EnemyType.sniper:
+                Instantiate(hitParticles[3], transform.position, transform.rotation);
+                break;
+            case EnemyType.spammer:
+                Instantiate(hitParticles[4], transform.position, transform.rotation);
+                break;
+
+        }
         soundManager.PlayOneShoot(soundManager.EnviromentSource, soundManager.EnviromentCollection.clips[1]);
         Destroy(gameObject);
         playerController.AddExperience(experience);
@@ -78,7 +98,7 @@ public class Enemy : MonoBehaviour
             if (FindObjectOfType<PlayerMovement>().isDashing) return;
             if (Vector2.Distance(player.position, transform.position) < attackRange)
             {
-                player.GetComponent<PlayerController>().TakeDamage(damage);
+                player.GetComponent<PlayerController>().TakeDamage((int) damage);
                 Die();
             }
         }
@@ -101,7 +121,7 @@ public class Enemy : MonoBehaviour
         foreach (var firePoint in firePoints)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Bullet>().damage = damage;
+            bullet.GetComponent<Bullet>().damage = (int) damage;
             bullet.GetComponent<Bullet>().speed = bulletSpeed;
             bullet.layer = 8;
             bullet.GetComponent<SpriteRenderer>().color = bulletColor;

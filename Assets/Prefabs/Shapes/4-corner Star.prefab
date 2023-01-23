@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 120
   Speed: 6
-  Damage: 30
+  Damage: 40
   FireRate: 30
   pathId: 3
   pathEvolution: 1
@@ -170,7 +170,7 @@ MonoBehaviour:
   firePoint: {fileID: 3672970103269389466}
   bulletPrefab: {fileID: 7564121188015581236, guid: ec24d3da769d667478c33f9a463b5d29, type: 3}
   abilitySprite: {fileID: 21300000, guid: 4e1ecbaffe528a74098c0c3ba9f3e90f, type: 3}
-  abilityCooldown: 25
+  abilityCooldown: 20
 --- !u!1 &3672970103269389467
 GameObject:
   m_ObjectHideFlags: 0

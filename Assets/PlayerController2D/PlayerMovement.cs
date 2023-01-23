@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float moveSpeed = 5f;
     [SerializeField] Rigidbody2D rb;
     public bool isDashing = false;
     public float dashSpeed;

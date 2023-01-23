@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 140
   Speed: 7
-  Damage: 45
+  Damage: 55
   FireRate: 45
   pathId: 3
   pathEvolution: 2

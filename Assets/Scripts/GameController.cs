@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     int wave = 1;
     int enemyCount = 1;
     int newEnemyIndex = 1;
+    public float waveDifficulty = 1f;
     bool waveIsEnd = true;
     private void Start()
     {
@@ -37,12 +38,24 @@ public class GameController : MonoBehaviour
         {
             spawnPointsList.Add(t);
         }
-        if (wave % 3 == 0) enemyCount++;
+        if (wave % 3 == 0)
+        {
+            enemyCount++;
+        }
         if (wave % 10 == 0 && newEnemyIndex < enemies.Length)
         {
             enemiesToSpawn.Add(enemies[newEnemyIndex]);
             newEnemyIndex++;
         }
+
+        if(wave >= 50)
+        {
+            if(wave % 5 == 0)
+            {
+                waveDifficulty += 0.2f;
+            }
+        }
+
         yield return new WaitForSeconds(waveCooldown);
         transform.position = player.position;
         //if (player.position.x <= 45 && player.position.x >= -45 &&
@@ -58,6 +71,16 @@ public class GameController : MonoBehaviour
         {
             int spawnIndex = Random.Range(0, spawnPointsList.Count);
             GameObject enemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn.Count)], enemiesParent);
+            Enemy enemyStats = enemy.GetComponent<Enemy>();
+
+            if(wave >= 50)
+            {
+            enemyStats.health *= waveDifficulty;
+            enemyStats.damage *= waveDifficulty;
+            enemyStats.fireRate = enemyStats.fireRate + waveDifficulty;
+            }
+            
+
             enemy.transform.position = spawnPointsList[spawnIndex].position;
             spawnPointsList.RemoveAt(spawnIndex);
             if (spawnPointsList.Count == 0)

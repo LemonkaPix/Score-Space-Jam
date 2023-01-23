@@ -137,6 +137,12 @@ MonoBehaviour:
   damage: 60
   firePoints:
   - {fileID: 7971879695285109440}
+  hitParticles:
+  - {fileID: 4016206414610199851, guid: 926ee7e3b290013449de584675b8f64d, type: 3}
+  - {fileID: 4016206414610199851, guid: 80f345c49a7f46e43beca7cc0ca65938, type: 3}
+  - {fileID: 4016206414610199851, guid: b9fe070dafe27244cb99d4618e82f265, type: 3}
+  - {fileID: 4016206414610199851, guid: 01d4585657e35ae4b81f45d5037dffef, type: 3}
+  - {fileID: 4016206414610199851, guid: e9d334b259ce23047b85a85c06807b75, type: 3}
   bulletPrefab: {fileID: 7564121188015581236, guid: c822aaf36f216a347b696d77391a599b, type: 3}
   experience: 50
   attackRange: 15

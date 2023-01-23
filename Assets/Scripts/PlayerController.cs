@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject gameUi;
     [SerializeField] GameObject PathSelection;
     [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject hitParticle;
     [SerializeField] TMP_Text timeAlive;
     [SerializeField] TMP_Text totalScore;
     public bool isGameOver = false;
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
 
     public void spawnFigure()
-    {
+    {   
         for (int i = 0; i < Shapes.Length; i++)
         {
             GameObject currentShape = Shapes[i];
@@ -162,13 +163,14 @@ public class PlayerController : MonoBehaviour
     public void Evolution(int evolve)
     {
 
-        plrExperience = 0;
+        
         if(currentPath == 0)
         {
             // Circle evolution
             PathSelection.SetActive(true);
             return;
         }
+        plrExperience = 0;
         currentPathEvo++;
         spawnFigure();
     }
@@ -176,6 +178,7 @@ public class PlayerController : MonoBehaviour
     {
         if(!canTakeDamage) return;
         SoundManager.Instance.PlayOneShoot(SoundManager.Instance.PlayerSource, SoundManager.Instance.PlayerCollection.clips[1]);
+        Instantiate(hitParticle, transform.position, transform.rotation);
         plrHealth -= damage;
         uiController.UpdateHealthBar();
         if (plrHealth <= 0)
