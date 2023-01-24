@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject hitParticle;
     [SerializeField] TMP_Text timeAlive;
     [SerializeField] TMP_Text totalScore;
+    [SerializeField] GameObject ability;
     public bool isGameOver = false;
 
     bool onRamCooldown;
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
     public int currentPath = 0;   //0-circle, 1-traingle, 2-square, 3-diamond, 4-hexagon
     public int currentPathEvo = 0;
     public GameObject[] Shapes;
-    [HideInInspector] public List<int> EvolutionCost = new List<int>() { 100, 200, 300, 400};
+    [HideInInspector] public List<int> EvolutionCost = new List<int>() { 100, 200};
 
     [Header("Upgrades")]
     public int UpgradePrize;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     public int HealthValue = 50;
     public int DamageValue = 50;
-    public int SpeedValue = 50;
+    public float SpeedValue = 50;
     public int FireRateValue = 50;
     public int BulletSpeeedValue = 2;
 
@@ -81,11 +82,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-        if (currentPathEvo == 1)
-        {
-            gameUi.transform.Find("Ability").gameObject.SetActive(true);
-            gameUi.transform.Find("Upgrades").gameObject.SetActive(true);
-        }   
         if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
         {
             IsPaused = !IsPaused;
@@ -146,7 +142,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject.transform.GetChild(0).gameObject);
                 Instantiate(currentShape, gameObject.transform);
                 maxPlrHealth = evoData.Health + (HealthLevel * HealthValue);
-                plrHealth += 20 + (HealthLevel * HealthValue);
+                plrHealth = evoData.Health + (HealthLevel * HealthValue);
                 if (plrHealth > maxPlrHealth) plrHealth = maxPlrHealth;
                 uiController.UpdateHealthBar();
                 plrSpeed = evoData.Speed;
@@ -158,15 +154,22 @@ public class PlayerController : MonoBehaviour
 
     public void Evolution(int evolve)
     {
-
-        
-        if(currentPath == 0)
+        switch (currentPathEvo)
         {
-            // Circle evolution
-            PathSelection.SetActive(true);
-            return;
+            case 0:
+                // Circle evolution
+                PathSelection.SetActive(true);
+                return;
+                break;
+            case 1:
+                ability.SetActive(true);
+                break;
+            default:
+                break;
         }
-        plrExperience = 0;
+
+        plrExperience -= EvolutionCost[currentPathEvo];
+        uiController.UpdateXP();
         currentPathEvo++;
         spawnFigure();
     }

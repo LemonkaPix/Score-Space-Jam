@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] float cycleColldown = 5;
     List<Transform> spawnPointsList = new List<Transform>();
     int wave = 1;
-    int enemyCount = 1;
+    int enemyCount = 2;
     int newEnemyIndex = 1;
     public float waveDifficulty = 1f;
     bool waveIsEnd = true;
@@ -41,17 +41,17 @@ public class GameController : MonoBehaviour
         {
             spawnPointsList.Add(t);
         }
-        if (wave % 3 == 0)
+        if (wave % 2 == 0)
         {
             enemyCount++;
         }
-        if (wave % 10 == 0 && newEnemyIndex < enemies.Length)
+        if (wave % 7 == 0 && newEnemyIndex < enemies.Length)
         {
             enemiesToSpawn.Add(enemies[newEnemyIndex]);
             newEnemyIndex++;
         }
 
-        if(wave >= 50)
+        if(wave >= 35)
         {
             if(wave % 5 == 0)
             {

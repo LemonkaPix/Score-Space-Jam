@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     public TMP_Text experienceText;
     public TMP_Text evolveText;
     [SerializeField] GameObject pathSelector;
+    [SerializeField] GameObject upgrades;
+
 
     [SerializeField] Image[] fireRateUpBar;
     [SerializeField] Image[] speedUpBar;
@@ -56,10 +58,13 @@ public class UIController : MonoBehaviour
 
     public void choosePath(int index) // 1 - triangle, 2 - square, 3 - rhomb, 4 - hexagon
     {
+        upgrades.SetActive(true);
         controller.currentPath = index;
         controller.spawnFigure();
         pathSelector.SetActive(false);
-        controller.plrExperience = 0;
+        controller.plrExperience -= controller.EvolutionCost[controller.currentPathEvo];
+        UpdateXP();
+        controller.currentPathEvo++;
     }
 
     public void EvolveXpText()
