@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 34efa935093c0b04182d907f116bd4a4, type: 3}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   Damage: 25
   FireRate: 40
   pathId: 4
-  pathEvolution: 1
+  pathEvolution: 2
 --- !u!60 &-4029001105965417770
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityPrefab: {fileID: 335461867996499806, guid: 0352f9cfd639edf4d94704ba563e92be, type: 3}
   abilityCooldown: 30
-  abilityLifeTime: 15
+  abilityLifeTime: 5
   abilitySprite: {fileID: 21300000, guid: 0e4e58db936635b48bb0e305c41ea0bf, type: 3}
   onCooldown: 0
   onUse: 0

@@ -69,7 +69,7 @@ public class UIController : MonoBehaviour
 
     public void EvolveXpText()
     {
-        if (controller.currentPathEvo < 2)
+        if (controller.currentPathEvo < 3)
         {
             evolveText.text = $"{controller.EvolutionCost[controller.currentPathEvo]} xp to evolve";
         }

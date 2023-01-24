@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
-        if (plrExperience >= EvolutionCost[currentPathEvo]) Evolution(currentPath);
+        if (plrExperience >= EvolutionCost[currentPathEvo] && currentPathEvo < 3) Evolution(currentPath);
     }
 
     public void changeUiImage(Sprite sprite) 
@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour
                 {
                     FireRateLevel++;
                     plrExperience -= UpgradePrize;
+                    SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[1]);
                 }
                 break;
             case 2: //speed
@@ -225,6 +226,8 @@ public class PlayerController : MonoBehaviour
                 {
                     SpeedLevel++;
                     plrExperience -= UpgradePrize;
+                    SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[1]);
+
                 }
                 break;
             case 3: //damage
@@ -233,6 +236,8 @@ public class PlayerController : MonoBehaviour
                     DamageLevel++;
                     plrExperience -= UpgradePrize;
                     //plrDamage += DamageValue;
+                    SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[1]);
+
                 }
                 break;
             case 4: //heath
@@ -243,6 +248,8 @@ public class PlayerController : MonoBehaviour
                     plrHealth += HealthValue;
                     maxPlrHealth += HealthValue;
                     uiController.UpdateHealthBar();
+                    SoundManager.Instance.PlayOneShoot(SoundManager.Instance.UISource, SoundManager.Instance.UICollection.clips[1]);
+
                 }
                 break;
             default:

@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 282b1dfddd6c9f84889951e63ab70e89, type: 3}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   Damage: 20
   FireRate: 90
   pathId: 1
-  pathEvolution: 1
+  pathEvolution: 2
 --- !u!60 &-8032694306899111484
 PolygonCollider2D:
   m_ObjectHideFlags: 0

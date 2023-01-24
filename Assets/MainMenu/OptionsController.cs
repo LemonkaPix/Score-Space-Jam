@@ -16,7 +16,7 @@ public class OptionsController : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat("Volume");
         slider.value = volume;
-        percentage.text = Mathf.Round((volume + 80) / 80 * 100).ToString();
+        percentage.text = Mathf.Round((volume + 40) / 40 * 100).ToString();
         SetVolume(volume);
     }
     public void CloseOptionsPanel()
@@ -36,7 +36,7 @@ public class OptionsController : MonoBehaviour
         {
             mixer.SetFloat("Volume", volume);
         }
-        percentage.text = Mathf.Round((volume + 80) / 80 * 100).ToString();
+        percentage.text = Mathf.Round((volume + 40) / 40 * 100).ToString();
         PlayerPrefs.SetFloat("Volume",volume);
     }
 

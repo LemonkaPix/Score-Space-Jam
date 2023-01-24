@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a383f97766cc19644a64abac7c1d7df4, type: 3}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   Damage: 40
   FireRate: 60
   pathId: 2
-  pathEvolution: 2
+  pathEvolution: 3
 --- !u!114 &-3267170262136750331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   firePoint: {fileID: 2035235587705269001}
   onCooldown: 0
   damage: 100
-  abilityCooldown: 30
+  abilityCooldown: 20
 --- !u!60 &8254035138045446113
 PolygonCollider2D:
   m_ObjectHideFlags: 0
