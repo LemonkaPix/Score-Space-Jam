@@ -193,8 +193,9 @@ public class PlayerController : MonoBehaviour
         stopwatch.Stop();
         Time.timeScale = 0f;
         if (currentPath != 0) score += 3000;
+        score += plrExperience * 5;
         score += currentPathEvo * 3000;
-        score += stopwatch.Elapsed.Seconds * 5;
+        score += (int)stopwatch.Elapsed.TotalSeconds * 5;
         
         deathScreen.SetActive(true);
         timeAlive.text = $"You were alive for: {(stopwatch.Elapsed.Minutes != 0 ? stopwatch.Elapsed.Minutes + " minutes and " : "")}{stopwatch.Elapsed.Seconds} seconds";

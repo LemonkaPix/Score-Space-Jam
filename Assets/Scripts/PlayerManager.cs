@@ -24,6 +24,11 @@ public class PlayerManager : MonoBehaviour
     }
     public void SetPlayerName()
     {
+        if (playerName.text.Length > 10)
+        {
+            playerName.text = "";
+            return;
+        }
         LootLockerSDKManager.SetPlayerName(playerName.text, (response) =>
         {
             if (response.success)
